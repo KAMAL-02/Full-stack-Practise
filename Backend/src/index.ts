@@ -10,10 +10,12 @@ import express, { Request, Response } from 'express';
 import { Task } from "./models"
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 const app = express();
 
 dotenv.config();
+app.use(cors());
 
 mongoose.connect(process.env.MONGO_URI!)
 .then(()=>console.log('Connected to MongoDB'))
