@@ -12,6 +12,9 @@ const userSchema = new mongoose.Schema({
     }
 });
 
+// Add an index to the "username" field
+userSchema.index({ username: 1 }); // Ascending order index on "username"
+
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
