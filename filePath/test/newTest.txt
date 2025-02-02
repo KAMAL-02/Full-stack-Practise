@@ -1,0 +1,2 @@
+Hello world in callback way
+This is a new line in callback way!

@@ -1,1 +1,1 @@
-Just working on my full-stack skills without AI
+Practising stuffs
