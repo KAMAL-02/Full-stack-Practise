@@ -1,50 +1,66 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
+const Schema = mongoose.Schema;
 
-const ClientSchema = new mongoose.Schema(
+//const io = require('socket.io');
+
+const mobileUsersSchema = new Schema(
   {
-    users: [{ type: mongoose.Schema.Types.ObjectId }],
-    devices: [{ type: mongoose.Schema.Types.ObjectId}],
+    // u: {
+    //     type: String,
+    // },
+    // p: {
+    //     type: String,
+    // },
+    p: {
+      type: String,
+    },
     n: {
       type: String,
-      require: true,
-    },
-    e: {
-      type: String,
-      unique: true,
-      require: true,
     },
     m: {
       type: String,
       unique: true,
-      require: true,
+      required: true,
     },
-    addr: {
-      type: String,
+    otp: {
+      type: Object,
     },
-    pin: {
+    e: {
       type: String,
+      // unique: true,
+      required: true,
     },
-    city: {
-      type: String,
+    a: {
+      type: Boolean,
+      default: true,
     },
-    state: {
-      type: String,
+    clientId: {
+      type: Schema.Types.ObjectId,
+      ref: "Client",
     },
-    country: {
-      type: String,
+    token: {
+      type: [String],
     },
-    password: {
+    blocklist: {
+      type: [String],
+    },
+    ports: {
+      type: [Object],
+    },
+    r: {
       type: String,
+      enum: ["t", "c"],
+      default: "c",
+    },
+    userRefreshDate: {
+      type: Date,
     },
   },
-  { timestamps: true },
+  {
+    timestamps: true,
+  }
 );
 
-let Clients = mongoose.model("clients", ClientSchema);
-
-// module.exports = {
-//   clients: Clients,
-// };
-
-export default Clients;
+const MobileUser = mongoose.model("MobileUser", mobileUsersSchema, "mobileusers");
+export default MobileUser;
